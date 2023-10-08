@@ -3,10 +3,13 @@
 Patrick Wang, 2021
 """
 from typing import Sequence, Tuple, TypeVar
+import nltk
 import numpy as np
 
 Q = TypeVar("Q")
 V = TypeVar("V")
+
+corpus = nltk.word_tokenize(nltk.corpus.brown.tagged_sents(tagset="universal")[:10000])
 
 
 def viterbi(
@@ -28,6 +31,7 @@ def viterbi(
         * A 1D numpy array of ints representing the most likely state sequence.
         * A float representing the probability of the most likely state sequence.
     """
+
     N = len(obs)
     Q, V = B.shape  # num_states, num_observations
 
